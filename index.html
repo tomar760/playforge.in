@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Gaming Site</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Basic styles for the game */
+    .game-container {
+      width: 100%;
+      height: 500px;
+      position: relative;
+      background-color: #87CEEB; /* Sky-blue background */
+      border: 2px solid #333;
+      overflow: hidden;
+    }
+    
+    .plane {
+      width: 50px;
+      height: 50px;
+      background-color: #FF5733; /* Plane color */
+      position: absolute;
+      left: 100px;
+      top: 225px; /* Initial position in the center */
+    }
+
+    .obstacle {
+      width: 60px;
+      height: 30px;
+      background-color: #FF6347;
+      position: absolute;
+      top: -30px; /* Start off-screen */
+      right: -60px;
+      animation: moveObstacle 3s linear infinite;
+    }
+
+    @keyframes moveObstacle {
+      0% {
+        right: -60px;
+      }
+      100% {
+        right: 100%;
+      }
+    }
+    
+    /* Styling for the navbar and other sections */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px;
+      background-color: #333;
+      color: white;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+
+    .nav-links li {
+      margin: 0 15px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 50px 0;
+      background-color: #222;
+      color: white;
+    }
+
+    .btn-start {
+      padding: 10px 20px;
+      background-color: #FF5733;
+      border: none;
+      cursor: pointer;
+      color: white;
+      font-size: 16px;
+    }
+
+    /* Other sections and footer */
+    .features, footer {
+      padding: 50px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">GamingHub</div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Games</a></li>
+        <li><a href="#">Leaderboard</a></li>
+        <li><a href="#">Profile</a></li>
+      </ul>
+      <div class="auth-buttons">
+        <button class="btn-login">Login</button>
+        <button class="btn-signup">Sign Up</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to GamingHub</h1>
+      <p>Experience the thrill of gaming like never before!</p>
+      <button class="btn-start" onclick="startGame()">Start Playing</button>
+    </div>
+  </section>
+
+  <!-- Game Section -->
+  <section class="game">
+    <div class="game-container" id="game-container">
+      <div class="plane" id="plane"></div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="feature-card">
+      <h3>Live Stats</h3>
+      <p>Real-time gaming stats and updates!</p>
+    </div>
+    <div class="feature-card">
+      <h3>Leaderboard</h3>
+      <p>Compete with the best players around the world.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Exclusive Rewards</h3>
+      <p>Unlock exclusive rewards and bonuses.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2024 GamingHub. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="#">FB</a>
+        <a href="#">TW</a>
+        <a href="#">IG</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Game Variables
+    let plane = document.getElementById('plane');
+    let gameContainer = document.getElementById('game-container');
+    let planeY = 225; // Initial plane position
+    let planeSpeed = 5; // Speed of the plane's movement
+    let gameInterval;
+    
+    // Function to start the game
+    function startGame() {
+      document.querySelector('.hero').style.display = 'none'; // Hide hero section
+      document.querySelector('.game').style.display = 'block'; // Show game section
+      gameInterval = setInterval(gameLoop, 20); // Start the game loop
+    }
+    
+    // Function to move the plane up
+    function moveUp() {
+      if (planeY > 0) {
+        planeY -= planeSpeed;
+        plane.style.top = planeY + 'px';
+      }
+    }
+
+    // Function to move the plane down
+    function moveDown() {
+      if (planeY < gameContainer.offsetHeight - plane.offsetHeight) {
+        planeY += planeSpeed;
+        plane.style.top = planeY + 'px';
+      }
+    }
+
+    // Listen for keydown events to move the plane
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowUp') moveUp();
+      if (e.key === 'ArrowDown') moveDown();
+    });
+
+    // Simple game loop (to be extended with collision, scoring, etc.)
+    function gameLoop() {
+      // Add obstacles, logic, and collision detection here (very simple for now)
+      if (Math.random() < 0.05) {
+        createObstacle();
+      }
+    }
+
+    // Function to create an obstacle
+    function createObstacle() {
+      let obstacle = document.createElement('div');
+      obstacle.classList.add('obstacle');
+      gameContainer.appendChild(obstacle);
+
+      // Set random position for obstacle and animate it
+      obstacle.style.top = Math.random() * (gameContainer.offsetHeight - 30) + 'px';
+      
+      // Remove the obstacle when it goes out of the screen
+      obstacle.addEventListener('animationiteration', function() {
+        gameContainer.removeChild(obstacle);
+      });
+    }
+  </script>
+</body>
+</html>
