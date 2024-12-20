@@ -1,52 +1,165 @@
-/* General body styles */
+/* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #121212;
+    color: #fff;
+}
+
+h1, h2, h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Hero Section */
+.hero {
     text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #000000, #c89f6b);
 }
 
-/* Header Styles */
-header {
-    background-color: #333;
-    color: white;
-    padding: 30px;
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #fff;
 }
 
-/* Game Links Section */
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+.btn-cta {
+    background-color: #c89f6b;
+    padding: 15px 30px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.btn-cta:hover {
+    background-color: #b78c5a;
+}
+
+/* Games Section */
 .games {
-    margin: 50px 0;
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #1a1a1a;
 }
 
-.games h2 {
-    font-size: 24px;
-    color: #333;
+.game-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
-.games ul {
-    list-style-type: none;
-    padding: 0;
+.game-card {
+    background-color: #2b2b2b;
+    border-radius: 8px;
+    width: 230px;
+    margin: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.games ul li {
-    margin: 10px 0;
+.game-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
 }
 
-.games a {
-    color: #4CAF50;
-    font-size: 20px;
+.game-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #c89f6b;
+}
+
+.game-link {
+    display: block;
+    text-align: center;
+    background-color: #c89f6b;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.game-link:hover {
+    background-color: #b78c5a;
+}
+
+/* Social Media Section */
+.social-media {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #333;
+    border-top: 2px solid #c89f6b;
+}
+
+.social-media h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.social-media p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background-color: #c89f6b;
+    border-radius: 50%;
+    text-align: center;
+    padding: 15px;
+    transition: background 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: #b78c5a;
+}
+
+.social-icons img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+/* Footer */
+footer {
+    background-color: #121212;
+    text-align: center;
+    padding: 20px;
+    font-size: 1rem;
+}
+
+footer p {
+    color: #ccc;
+}
+
+footer a {
+    color: #c89f6b;
     text-decoration: none;
 }
 
-.games a:hover {
-    color: #333;
+footer a:hover {
     text-decoration: underline;
-}
-
-/* Footer Styles */
-footer {
-    background-color: #333;
-    color: white;
-    padding: 10px;
 }
