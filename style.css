@@ -1,0 +1,52 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Header Styles */
+header {
+    background-color: #333;
+    color: white;
+    padding: 30px;
+}
+
+/* Game Links Section */
+.games {
+    margin: 50px 0;
+}
+
+.games h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.games ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.games ul li {
+    margin: 10px 0;
+}
+
+.games a {
+    color: #4CAF50;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.games a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+}
