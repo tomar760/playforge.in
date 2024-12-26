@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris Game - PlayForge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🎮 Tetris Game</h1>
+        <p>Welcome to the classic Tetris Game! Clear lines and score points!</p>
+    </header>
+
+    <section class="game-container">
+        <canvas id="tetris" width="300" height="600"></canvas>
+        <div class="game-controls">
+            <button onclick="startGame()">Start Game</button>
+            <button onclick="resetGame()">Reset Game</button>
+        </div>
+        <div id="score">
+            <h2>Score: <span id="score-value">0</span></h2>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 PlayForge. All rights reserved.</p>
+    </footer>
+
+    <script src="tetris.js"></script>
+
+</body>
+</html>
