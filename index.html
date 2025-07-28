@@ -9,7 +9,17 @@
 </head>
 <body>
 
-    <!-- Hero Section -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">PlayForge</a>
+            <ul class="nav-links">
+                <li><a href="#games">Games</a></li>
+                <li><a href="#about">About</a></li> <li><a href="#contact">Contact</a></li> <li><button class="nav-btn" onclick="openLoginModal()">Login</button></li>
+                <li><button class="nav-btn" onclick="openRegisterModal()">Register</button></li>
+            </ul>
+        </div>
+    </nav>
+
     <section class="hero">
         <div class="hero-content">
             <h1>🎮 Welcome to PlayForge - The Ultimate Gaming Experience! 🌟</h1>
@@ -18,11 +28,9 @@
         </div>
     </section>
 
-    <!-- Games Section -->
     <section id="games" class="games">
         <h2>🎮 Featured Games</h2>
         <div class="game-cards">
-            <!-- Add 25 Game Cards here -->
             <div class="game-card"><h3>Snake Game</h3><a href="games/snake.html" class="game-link">Play Now</a></div>
             <div class="game-card"><h3>Aviator Game</h3><a href="games/aviator.html" class="game-link">Play Now</a></div>
             <div class="game-card"><h3>Fruit Slots</h3><a href="games/fruit-slots.html" class="game-link">Play Now</a></div>
@@ -52,7 +60,6 @@
         </div>
     </section>
 
-    <!-- Social Media Section -->
     <section class="social-media">
         <h3>🌐 Follow Us on Social Media</h3>
         <p>Stay connected with us for the latest updates and exclusive rewards!</p>
@@ -66,10 +73,64 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2024 PlayForge. All rights reserved.</p>
     </footer>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeLoginModal()">&times;</span>
+            <div class="login-container">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <input type="email" id="loginEmail" required placeholder=" ">
+                        <label for="loginEmail">Email Address</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="loginPassword" required placeholder=" ">
+                        <label for="loginPassword">Password</label>
+                        <span class="show-password-toggle" onclick="togglePasswordVisibility('loginPassword')">👁️</span>
+                    </div>
+                    <button type="submit" class="login-button">Login</button>
+                    <p class="forgot-password">Forgot Password?</p>
+                    <p class="register-link">Don't have an account? <a href="#" onclick="openRegisterModal(); closeLoginModal(); return false;">Register here</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeRegisterModal()">&times;</span>
+            <div class="login-container"> <h2>Register</h2>
+                <form id="registerForm">
+                    <div class="input-group">
+                        <input type="text" id="registerUsername" required placeholder=" ">
+                        <label for="registerUsername">Username</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="registerEmail" required placeholder=" ">
+                        <label for="registerEmail">Email Address</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="registerPassword" required placeholder=" ">
+                        <label for="registerPassword">Password</label>
+                        <span class="show-password-toggle" onclick="togglePasswordVisibility('registerPassword')">👁️</span>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="confirmPassword" required placeholder=" ">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <span class="show-password-toggle" onclick="togglePasswordVisibility('confirmPassword')">👁️</span>
+                    </div>
+                    <button type="submit" class="login-button">Register</button>
+                    <p class="register-link">Already have an account? <a href="#" onclick="openLoginModal(); closeRegisterModal(); return false;">Login here</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
