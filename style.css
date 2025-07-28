@@ -5,12 +5,83 @@ body {
     padding: 0;
     background-color: #121212;
     color: #fff;
+    /* Ensure body allows for modal overlay */
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 h1, h2, h3 {
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
     color: #fff;
+}
+
+/* --- Navigation Bar Styles --- */
+.navbar {
+    background-color: rgba(18, 18, 18, 0.9); /* Slightly transparent dark background */
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure navbar stays on top */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.navbar .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navbar .logo {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #c89f6b; /* Your accent color */
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .nav-links li {
+    margin-left: 30px;
+}
+
+.navbar .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05rem;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    color: #c89f6b; /* Accent color on hover */
+}
+
+.navbar .nav-btn {
+    background-color: #c89f6b; /* Button background */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar .nav-btn:hover {
+    background-color: #b78c5a; /* Darker accent on hover */
+    transform: translateY(-2px);
 }
 
 /* Hero Section */
@@ -162,4 +233,230 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+/* --- Modal & Login/Register Form Styles (Instagram Reel inspired) --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Sit on top of everything */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.8); /* Darker overlay */
+    display: flex; /* Use flexbox to center content */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.08); /* Slightly more opaque for content box */
+    backdrop-filter: blur(15px); /* Stronger glassmorphism effect */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px; /* More rounded corners */
+    padding: 40px;
+    box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5); /* Stronger shadow */
+    text-align: center;
+    width: 400px; /* Slightly wider */
+    max-width: 90%;
+    position: relative;
+    transform: translateY(-50px); /* Start slightly above center */
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.modal.active .modal-content {
+    transform: translateY(0); /* Slide into center */
+    opacity: 1;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: #fff; /* White close button */
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #c89f6b; /* Accent color on hover */
+    text-decoration: none;
+}
+
+/* Reusing and adapting .login-container for both forms */
+.login-container {
+    padding: 0; /* Remove extra padding from here as it's handled by modal-content */
+    background: none; /* Remove background as it's handled by modal-content */
+    backdrop-filter: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.login-container h2 {
+    color: #c89f6b; /* Accent color for headings */
+    margin-bottom: 30px;
+    font-size: 2.5em; /* Slightly larger heading */
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 35px; /* More space between inputs */
+    text-align: left;
+}
+
+.input-group input {
+    width: calc(100% - 20px); /* Account for padding */
+    padding: 15px 10px 10px 10px; /* Top padding for label space */
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #555;
+    color: #e0e0e0;
+    font-size: 1.1em;
+    outline: none;
+    transition: border-bottom 0.3s ease, color 0.3s ease;
+    border-radius: 0; /* Ensure no default browser border-radius */
+}
+
+.input-group input:focus {
+    border-bottom: 2px solid #c89f6b; /* Accent color on focus */
+}
+
+/* This is critical for the "floating label" effect */
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: -20px; /* Move label further up */
+    font-size: 0.85em; /* Slightly larger floating label */
+    color: #c89f6b; /* Accent color for floating label */
+}
+
+.input-group label {
+    position: absolute;
+    top: 15px; /* Align with input padding */
+    left: 10px;
+    color: #aaa;
+    pointer-events: none;
+    transition: 0.3s ease all;
+    font-size: 1.1em; /* Initial label size */
+}
+
+.login-button {
+    background: linear-gradient(90deg, #c89f6b, #b78c5a); /* Your existing CTA gradient */
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px; /* More rounded button */
+    font-size: 1.3em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    margin-top: 30px; /* More space above button */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Subtle button shadow */
+}
+
+.login-button:hover {
+    transform: translateY(-5px); /* More pronounced lift effect on hover */
+    box-shadow: 0 10px 25px rgba(200, 159, 107, 0.4); /* Accent colored shadow on hover */
+}
+
+.forgot-password, .register-link {
+    font-size: 0.95em;
+    margin-top: 25px; /* More space */
+    color: #bbb;
+}
+
+.register-link a {
+    color: #c89f6b; /* Accent color for links */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+    color: #fff; /* White on hover for contrast */
+}
+
+/* Password Toggle */
+.show-password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 15px; /* Align with input text */
+    cursor: pointer;
+    color: #aaa;
+    font-size: 1.2em; /* Slightly larger icon */
+    user-select: none; /* Prevent text selection on icon */
+    transition: color 0.3s ease;
+}
+
+.show-password-toggle:hover {
+    color: #c89f6b; /* Accent color on hover */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        display: none; /* Hide by default on smaller screens */
+    }
+
+    .navbar .nav-links.active {
+        display: flex; /* Show when active (toggle with JS) */
+    }
+
+    .navbar .nav-links li {
+        margin: 10px 0;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .game-card {
+        width: 100%; /* Full width cards on small screens */
+    }
+
+    .modal-content {
+        width: 95%; /* Make modal content almost full width */
+        padding: 30px;
+    }
+
+    .login-container h2 {
+        font-size: 2em;
+    }
+
+    .input-group input {
+        font-size: 1em;
+    }
+
+    .input-group label {
+        font-size: 1em;
+    }
+
+    .login-button {
+        font-size: 1.1em;
+        padding: 12px 25px;
+    }
 }
